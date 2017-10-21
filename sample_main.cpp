@@ -26,6 +26,33 @@
    to the appropriate exchange. The `test_exchange_index` variable
    only changes the Configuration when `test_mode` is set to `true`.
 */
+
+string fcmd;
+int fair_p=1865;
+int position=0;
+int updata_fair_p_delta=1;
+
+
+inline void update_position(int delta)
+{
+    if(position+delta<=10 || position+delta>=-10)
+    {
+        position+=delta;
+    }
+}
+
+inline void update_fair_p()
+{
+    if(position>0)
+    {
+        fair_p-=update_fair_p_delta;
+    }
+    else
+    {
+        fair_p+=update_fair_p_delta;
+    }
+}
+
 class Configuration {
 private:
   /*
@@ -238,7 +265,24 @@ inline void error_(string msg)
 
 inline void book_buy_(string sym, int price, int size)
 {
-	cout << "Book_Buy " << sym << " " << price << " " << size << endl;
+    if(sym=="HSBC")
+    {
+        string cmd;
+        if(price>=fair_p)
+        {
+            if(position-size<-10)
+            {
+                size=position+10;
+            }
+            cmd=_add(++tid,sym,TRADETYPE_SELL,fair_p,size);
+            fcmd+=cmd;
+            fcmd+="\n";
+            update_position(-size);
+            updata_fair_p();
+        }
+    }
+	//cout << "Book_Buy " << sym << " " << price << " " << size << endl;
+/*
     if(sym=="USDHKD")
     {
         string cmd;
@@ -248,11 +292,29 @@ inline void book_buy_(string sym, int price, int size)
             conn.send_to_exchange(cmd);
         }
     }
+    */
 }
 
 inline void book_sell_(string sym, int price, int size)
 {
-	cout << "Book_Sell " << sym << " " << price << " " << size << endl;
+    if(sym=="HSBC")
+    {
+        string cmd;
+        if(price<=fair_p)
+        {
+            if(position+size>10)
+            {
+                size=10-position;
+            }
+            cmd=_add(++tid,sym,TRADETYPE_BUY,fair_p,size);
+            fcmd+=cmd;
+            fcmd+="\n";
+            update_position(size);
+            updata_fair_p();
+        }
+    }
+	//cout << "Book_Sell " << sym << " " << price << " " << size << endl;
+    /*
 	if(sym=="USDHKD")
 	{
 		string cmd;
@@ -262,6 +324,7 @@ inline void book_sell_(string sym, int price, int size)
 			conn.send_to_exchange(cmd);
 		}
 	}
+    */
 }
 
 inline void trade_(string sym, int price, int size)
@@ -410,8 +473,10 @@ int main(int argc, char *argv[])
     conn.send_to_exchange(join(" ", data));
     while(1)
     {
+        fcmd.clear();
         std::string line = conn.read_from_exchange();
         _cmd_explainer(line);
+        conn.send_to_exchange(fcmd);
         //std::cout << line << std::endl;
     }
     return 0;
