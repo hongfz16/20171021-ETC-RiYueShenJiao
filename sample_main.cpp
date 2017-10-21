@@ -41,12 +41,12 @@ public:
   std::string exchange_hostname;
   int exchange_port;
   Configuration(bool test_mode) : team_name("RIYUESHENJIAO"){
-    exchange_port = 20001; /* Default text based port */
+    exchange_port = 20000; /* Default text based port */
     if(true == test_mode) {
       exchange_hostname = "test-exch-" + team_name;
       exchange_port += test_exchange_index;
     } else {
-      exchange_hostname = "localhost";
+      exchange_hostname = "production";
     }
   }
 };
@@ -283,7 +283,7 @@ inline void book_buy_(string sym, int price, int size)
             fcmd+=cmd;
             fcmd+="\n";
             update_position(-size);
-            update_fair_p();
+       //     update_fair_p();
         }
     }
 	//cout << "Book_Buy " << sym << " " << price << " " << size << endl;
@@ -315,7 +315,7 @@ inline void book_sell_(string sym, int price, int size)
             fcmd+=cmd;
             fcmd+="\n";
             update_position(size);
-            update_fair_p();
+        //    update_fair_p();
         }
     }
 	//cout << "Book_Sell " << sym << " " << price << " " << size << endl;
@@ -332,12 +332,12 @@ inline void book_sell_(string sym, int price, int size)
     */
 }
 
-int count=100;
+int temp_count=100;
 inline void trade_(string sym, int price, int size)
 {
 	cout << "Trade " << sym << " " << price << " " << size << endl;
 //TODO
-	if(sym=="HSBC" &&(--count)>=0)
+	if(sym=="HSBC" &&(--temp_count)>=0)
 	{
         trade_price.push_back(price);
         int temp_price=0;
@@ -346,9 +346,11 @@ inline void trade_(string sym, int price, int size)
             temp_price+=trade_price[i];
         }
         temp_price/=trade_price.size();
-		fair_p=temp_price;
-		flag_set_pri=true;
+		fair_p=temp_price-2;
+		//flag_set_pri=true;
 	}
+	if(temp_count==0)
+		flag_set_pri=true;
 }
 
 inline void ask_(int id)
@@ -476,7 +478,7 @@ inline void _cmd_explainer(string cmd)
 int main(int argc, char *argv[])
 {
     // Be very careful with this boolean! It switches between test and prod
-    bool test_mode = true;
+    bool test_mode = false;
     Configuration config(test_mode);
     Connection conn(config);
 
