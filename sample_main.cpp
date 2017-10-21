@@ -165,10 +165,24 @@ int position=0;
 int update_fair_p_delta=2;
 vector<int> trade_price;
 
+int gbp_fair_p=0;
+int gbp_position=0;
+vector<int> gbp_trade_price;
+int gbp_count=20;
+bool gbp_can_trade=false;
+
 
 inline void update_position(int delta)
 {
     if(position+delta<=10 || position+delta>=-10)
+    {
+        position+=delta;
+    }
+}
+
+inline void update_gbp_position(int delta)
+{
+    if(gbp_position+delta<=200000 || gbp+position>= 200000)
     {
         position+=delta;
     }
@@ -286,6 +300,23 @@ inline void book_buy_(string sym, int price, int size)
        //     update_fair_p();
         }
     }
+    if(sym=="GBP" && gbp_can_trade)
+    {
+        string cmd;
+        if(price>=gbp_fair_p && gbp_position>0)
+        {
+            if(gbp_position-size<=1)
+            {
+                size=position;
+            }
+            if(size==0)
+            return;
+            cmd=_add(tid++,sym,TRADETYPE_SELL,gbp_fair_p,size);
+            fcmd+=cmd;
+            fcmd+="\n";
+            update_gbp_position(-size);
+        }
+    }
 	//cout << "Book_Buy " << sym << " " << price << " " << size << endl;
 /*
     if(sym=="USDHKD")
@@ -317,6 +348,19 @@ inline void book_sell_(string sym, int price, int size)
             update_position(size);
         //    update_fair_p();
         }
+    }
+
+    if(sym=="GBP" && gbp_can_trade)
+    {
+            string cmd;
+            if(price<=gbp_fair_p)
+            {
+                size=200000-position;
+            }
+            cmd=_add(++tid,sym,TRADETYPE_BUY,price,size);
+            fcmd+=cmd;
+            fcmd+="\n";
+            update_gbp_position(size);
     }
 	//cout << "Book_Sell " << sym << " " << price << " " << size << endl;
     /*
@@ -351,6 +395,20 @@ inline void trade_(string sym, int price, int size)
 	}
 	if(temp_count==0)
 		flag_set_pri=true;
+
+    if(sym=="GBP" && (--gbp_count)>=0)
+    {
+        gbp_trade_price.push_back(price);
+        int temp_price=0;
+        for(int i=0;i<trade_price.size();++i)
+        {
+            temp_price+=trade_price[i];
+        }
+        temp_price/=trade_price.size();
+        gbp_fair_p=temp_price-2;
+    }
+    if(gbp_count==0)
+        gbp_can_trade=true;
 }
 
 inline void ask_(int id)
