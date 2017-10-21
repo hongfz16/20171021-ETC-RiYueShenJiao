@@ -277,11 +277,13 @@ inline void book_buy_(string sym, int price, int size)
             {
                 size=position;
             }
+            if(size==0)
+                return;
             cmd=_add(++tid,sym,TRADETYPE_SELL,fair_p,size);
             fcmd+=cmd;
             fcmd+="\n";
             update_position(-size);
-            //update_fair_p();
+            update_fair_p();
         }
     }
 	//cout << "Book_Buy " << sym << " " << price << " " << size << endl;
@@ -313,7 +315,7 @@ inline void book_sell_(string sym, int price, int size)
             fcmd+=cmd;
             fcmd+="\n";
             update_position(size);
-            //update_fair_p();
+            update_fair_p();
         }
     }
 	//cout << "Book_Sell " << sym << " " << price << " " << size << endl;
@@ -333,7 +335,7 @@ inline void book_sell_(string sym, int price, int size)
 int count=100;
 inline void trade_(string sym, int price, int size)
 {
-//	cout << "Trade " << sym << " " << price << " " << size << endl;
+	cout << "Trade " << sym << " " << price << " " << size << endl;
 //TODO
 	if(sym=="HSBC" &&(--count)>=0)
 	{
