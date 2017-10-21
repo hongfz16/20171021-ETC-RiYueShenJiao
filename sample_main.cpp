@@ -27,31 +27,6 @@
    only changes the Configuration when `test_mode` is set to `true`.
 */
 
-string fcmd;
-int fair_p=1865;
-int position=0;
-int updata_fair_p_delta=1;
-
-
-inline void update_position(int delta)
-{
-    if(position+delta<=10 || position+delta>=-10)
-    {
-        position+=delta;
-    }
-}
-
-inline void update_fair_p()
-{
-    if(position>0)
-    {
-        fair_p-=update_fair_p_delta;
-    }
-    else
-    {
-        fair_p+=update_fair_p_delta;
-    }
-}
 
 class Configuration {
 private:
@@ -66,7 +41,7 @@ public:
   std::string exchange_hostname;
   int exchange_port;
   Configuration(bool test_mode) : team_name("RIYUESHENJIAO"){
-    exchange_port = 20000; /* Default text based port */
+    exchange_port = 20001; /* Default text based port */
     if(true == test_mode) {
       exchange_hostname = "test-exch-" + team_name;
       exchange_port += test_exchange_index;
@@ -184,6 +159,31 @@ using namespace std;
 const int TRADETYPE_BUY=0;
 const int TRADETYPE_SELL=1;
 int tid;
+std::string fcmd;
+int fair_p=1810;
+int position=0;
+int update_fair_p_delta=1;
+
+
+inline void update_position(int delta)
+{
+    if(position+delta<=10 || position+delta>=-10)
+    {
+        position+=delta;
+    }
+}
+
+inline void update_fair_p()
+{
+    if(position>0)
+    {
+        fair_p-=update_fair_p_delta;
+    }
+    else
+    {
+        fair_p+=update_fair_p_delta;
+    }
+}
 
 //cmd gen
 const string TEAMNAME = "RiYueShenJiao";
@@ -263,22 +263,24 @@ inline void error_(string msg)
 	cout << "Error " << msg << endl;
 }
 
+bool flag_set_pri=false;
+
 inline void book_buy_(string sym, int price, int size)
 {
-    if(sym=="HSBC")
+    if(sym=="HSBC" && flag_set_pri)
     {
         string cmd;
-        if(price>=fair_p)
+        if(price>=fair_p && position>0)
         {
-            if(position-size<-10)
+            if(position-size<=1)
             {
-                size=position+10;
+                size=position;
             }
             cmd=_add(++tid,sym,TRADETYPE_SELL,fair_p,size);
             fcmd+=cmd;
             fcmd+="\n";
             update_position(-size);
-            updata_fair_p();
+            //update_fair_p();
         }
     }
 	//cout << "Book_Buy " << sym << " " << price << " " << size << endl;
@@ -297,7 +299,7 @@ inline void book_buy_(string sym, int price, int size)
 
 inline void book_sell_(string sym, int price, int size)
 {
-    if(sym=="HSBC")
+    if(sym=="HSBC" && flag_set_pri)
     {
         string cmd;
         if(price<=fair_p)
@@ -306,11 +308,11 @@ inline void book_sell_(string sym, int price, int size)
             {
                 size=10-position;
             }
-            cmd=_add(++tid,sym,TRADETYPE_BUY,fair_p,size);
+            cmd=_add(++tid,sym,TRADETYPE_BUY,price,size);
             fcmd+=cmd;
             fcmd+="\n";
             update_position(size);
-            updata_fair_p();
+            //update_fair_p();
         }
     }
 	//cout << "Book_Sell " << sym << " " << price << " " << size << endl;
@@ -327,9 +329,15 @@ inline void book_sell_(string sym, int price, int size)
     */
 }
 
+
 inline void trade_(string sym, int price, int size)
 {
-	cout << "Trade " << sym << " " << price << " " << size << endl;
+//	cout << "Trade " << sym << " " << price << " " << size << endl;
+	if(sym=="HSBC" && !flag_set_pri)
+	{
+		fair_p=price;
+		flag_set_pri=true;
+	}
 }
 
 inline void ask_(int id)
@@ -476,6 +484,7 @@ int main(int argc, char *argv[])
         fcmd.clear();
         std::string line = conn.read_from_exchange();
         _cmd_explainer(line);
+	if(fcmd.size()>0)
         conn.send_to_exchange(fcmd);
         //std::cout << line << std::endl;
     }
