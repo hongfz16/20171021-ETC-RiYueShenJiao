@@ -162,7 +162,7 @@ int tid;
 std::string fcmd;
 int fair_p=1810;
 int position=0;
-int update_fair_p_delta=1;
+int update_fair_p_delta=2;
 vector<int> trade_price;
 
 
