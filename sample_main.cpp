@@ -163,6 +163,7 @@ std::string fcmd;
 int fair_p=1810;
 int position=0;
 int update_fair_p_delta=1;
+vector<int> trade_price;
 
 
 inline void update_position(int delta)
@@ -329,13 +330,21 @@ inline void book_sell_(string sym, int price, int size)
     */
 }
 
-
+int count=100;
 inline void trade_(string sym, int price, int size)
 {
 //	cout << "Trade " << sym << " " << price << " " << size << endl;
-	if(sym=="HSBC" && !flag_set_pri)
+//TODO
+	if(sym=="HSBC" &&(--count)>=0)
 	{
-		fair_p=price;
+        trade_price.push_back(price);
+        int temp_price=0;
+        for(int i=0;i<trade_price.size();++i)
+        {
+            temp_price+=trade_price[i];
+        }
+        temp_price/=trade_price.size();
+		fair_p=temp_price;
 		flag_set_pri=true;
 	}
 }
