@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>finance 101</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="finance 101"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2017-10-21T00:52+0000"/>
+<meta name="author" content="Ubuntu"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">finance 101</h1>
+
+
+
+
+
+<img id="handout-logo" src="../img/etc_logo.svg" />
+<div id="handout">
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Financial Instruments</a></li>
+<li><a href="#sec-2">2 Orders</a></li>
+<li><a href="#sec-3">3 Stock Exchanges</a></li>
+<li><a href="#sec-4">4 The business of market making</a></li>
+<li><a href="#sec-5">5 Some basic trading strategies</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Financial Instruments</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>At Jane Street, we trade many different types of financial instruments. For this
+competition, we will focus on a few of the basic types.
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Stocks</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>Many companies have securities that you can trade, "shares", which represent
+ownership of a fraction of the company.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> ADRs</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>Sometimes investors want to be able to buy and sell stocks of foreign companies on
+US exchanges. This can be achieved by trading a receipt called an ADR (American
+Depository Receipt), issued by a US bank. An ADR can be converted to the foreign stock
+by bringing it to the issuer.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Currencies</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>Other financial instruments are bought and sold with currencies, such as US
+Dollars (USD), British Pounds (GBP), or Hong Kong Dollars (HKD). Many
+currencies can also be traded in terms of others, so for example trading USDHKD
+lets you buy or sell US dollars using Hong Kong dollars. Some currencies trade
+freely, while others have fixed relationships to each other.
+</p>
+<p>
+Each unit of a currency pair you trade today is for 10000 of the base currency,
+so if you buy 1 USDHKD, you will be receiving 10000 USD.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Orders</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>In the most basic sense, trading is buying and selling securities. There are
+different kinds of orders that one might send to an exchange, the most common being
+a limit order. A limit order is an instruction to buy or sell a security at a
+particular price (the "limit").
+</p>
+<p>
+The parameters that specify a limit order are:
+</p>
+<ul>
+<li>The name of the security you want to trade
+</li>
+<li>Whether you want to buy or sell it
+</li>
+<li>The "worst" price you're willing to trade at (i.e. the highest price
+  if you're buying, or the lowest price if you're selling).
+</li>
+<li>How many shares / contracts of the security you want to trade.
+</li>
+</ul>
+
+
+<p>
+A "bid" price is the price specified by a buy order, and an "offer" or "ask" price is
+the price specified by a sell order.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Stock Exchanges</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>A lot of our trading occurs on exchanges, which are highly regulated electronic
+marketplaces that match up buyers and sellers in the following way:
+</p>
+<p>
+Suppose you're the first person to send an order that day. You send an order to buy
+10 BOND shares for $995. No-one is willing to trade against you right now, so the
+exchange just enters your order into the "book" and it sits there. This is called
+a "resting order".
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left"></td><td class="left">bids</td><td class="left">offers</td><td class="left"></td></tr>
+<tr><td class="left">10</td><td class="left">$995</td><td class="left"></td><td class="left"></td></tr>
+</tbody>
+</table>
+
+
+<p>
+Let's say someone else comes along and also sends a buy order for $995, for 100
+shares. They can't trade with you &ndash; you both want to buy. So now the book
+looks like this:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left"></td><td class="left">bids</td><td class="left">offers</td><td class="left"></td></tr>
+<tr><td class="left">110</td><td class="left">$995</td><td class="left"></td><td class="left"></td></tr>
+</tbody>
+</table>
+
+
+<p>
+Note that the exchange displays the sum of all of the orders at a given price
+point and doesn't divide it up into the individual orders.
+</p>
+<p>
+A few more people come in and send: a sell order for 500 shares at $1001, a sell
+order for 50 shares at $1002, and a sell order for 3000 shares at $1005. There is
+still no trading &ndash; the most anyone is willing to buy for is $995, but the least
+anyone is willing to sell at is $1001.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="left"></td><td class="left">bids</td><td class="left">offers</td><td class="right"></td></tr>
+<tr><td class="left">110</td><td class="left">$995</td><td class="left">$1001</td><td class="right">500</td></tr>
+<tr><td class="left"></td><td class="left"></td><td class="left">$1002</td><td class="right">50</td></tr>
+<tr><td class="left"></td><td class="left"></td><td class="left">$1005</td><td class="right">3000</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Finally, someone comes along and sends a sell order for 30 shares at a price of
+$995. This can trade with the buy orders. Which orders get "filled"? First the 10-share
+buy order gets fully filled, as it was on the exchange first (this is called
+"price-time priority": the orders are sorted first by price, and then by age).
+The owner of the buy order gets a message from the exchange telling them how many of their
+shares traded (all 10 in this case). Now there are 20 shares left from the 30-share
+sell order. Next, the 100-share buy order gets partially filled with the remaining 20 shares.
+The owner of this buy order gets a message from the exchange as well, telling them 20 of their
+shares traded. And of course, the owner of the sell order also gets a message (or possibly
+multiple messages) about their fills.
+</p>
+<p>
+After that's all done, the book looks like this:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="left"></td><td class="left">bids</td><td class="left">offers</td><td class="right"></td></tr>
+<tr><td class="left">80</td><td class="left">$995</td><td class="left">$1001</td><td class="right">500</td></tr>
+<tr><td class="left"></td><td class="left"></td><td class="left">$1002</td><td class="right">50</td></tr>
+<tr><td class="left"></td><td class="left"></td><td class="left">$1005</td><td class="right">3000</td></tr>
+</tbody>
+</table>
+
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Price improvement</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<p> Any given trade is always between an order that was previously on the
+ book (the resting order), and one that comes in and never gets
+ entered into the book.
+</p>
+<p>
+ The price of a trade is always that of the <b>resting</b> order. For
+ example, if there is a resting order to buy for 80, and someone sends
+ an order to sell for 70, a trade goes up at the price of 80.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> The business of market making</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>Market making is one way that firms participate on the financial markets. The
+purpose of market making is to act as an intermediary for other people's trading.
+For example, suppose Alice wants to buy some shares, and Bob wants to sell some.
+It seems good for them to trade with each other, but if we require that they
+meet at the exchange at the same time, this is not likely to be efficient. If
+this were really how markets worked, you might be afraid to invest.  Who knows
+whether you'd be lucky enough to find a buyer when it came to sell?
+And if you did find a counterparty, how would you agree on a fair price?
+</p>
+<p>
+Market makers are always willing to buy and always willing to sell. They have
+some conception of how much a security is worth right now (its "fair value"),
+but no long term interest in owning the security. Market makers are always willing
+to buy at slightly below the fair value and sell at slightly above it.  You can
+think of market making a bit like running a supermarket: you are simply the link
+ between the sellers of goods (wholesale producers) and the buyers (shoppers).
+You charge some premium on your wholesale purchase price in order to make a profit.
+</p>
+<p>
+Unlike a supermarket however, a market maker can sell securities that they don't
+currently own, called "short selling", and end up with a negative position
+(number of the security they own). You should try to keep your position close
+to 0 in order to limit your exposure to large price moves, on which you don't really
+have a long-term opinion.
+</p>
+<p>
+It's important to note that it's wrong to think of trading as strictly a
+zero-sum game. In particular, there will be other participants in the <code>etc</code>
+market beyond the bots you create. Some of these might act like "investors" --
+people just wishing to buy (or sell) securities, who want to keep that position
+for a long time, putting capital at risk in order to earn a return. They're not
+very sensitive to the price, since they mostly just trust that the market has
+the fair price for the security right now. So they're likely to buy or sell on
+whatever market they see. Other participants are competing with you &ndash; they have
+a rough idea of what they think the security is worth, and they'll try to buy below
+that and sell above it.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Some basic trading strategies</h2>
+<div class="outline-text-2" id="text-5">
+
+<p>The basic strategy is:
+</p>
+<ul>
+<li>Have some idea of a fair value for each security
+</li>
+<li>Attempt to buy the security for less than fair, and sell it for more than fair.
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Fair values</h3>
+<div class="outline-text-3" id="text-5-1">
+
+<p>How might you come up with a fair value in the first place? Since markets (both
+in the real world and in this competition) tend to be fairly efficient most of
+the time, a good starting point is that fair value is probably between the best
+bid and best offer; half-way between these ("mid") is usually a good starting
+place for fair.
+</p>
+<p>
+There are some classes of securities for which coming up with a better fair is
+relatively straightfoward. For example, as mentioned above, you can convert an
+ADR to its underlying security for a fee, so if you have an adr FOO and an
+underlying stock BAR, and know the conversion rate between their currencies, it
+should be fairly clear how to get the price for one in terms of anotehr.
+</p>
+<p>
+For other securities, it is less obvious what you might do. In general,
+predicting whether a stock will go up or down is hard, so it is unlikely you
+will be able to make money by betting on a stock going up or down. That said,
+it can still be possible to make money by providing liquidity in these stocks,
+but we we will give no further hints in this section :)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Trading from your fair value</h3>
+<div class="outline-text-3" id="text-5-2">
+
+<p>It may seem that all the trickery is in coming up with a fair, and indeed it is
+possible to do some very complex things in that space. But it's also not
+obvious how to trade around it. Let's look at some basic ideas.
+</p>
+<p>
+If you think a financial security is worth exactly $100, it is impossible to
+make money by sending buy or sell orders at exactly $100. Obviously, you'll
+want to send buy orders below $100 and sell orders above $100. The difference
+between the price of your order or fill and your fair value is called the edge.
+More precisely:
+</p>
+<pre class="example">
+ edge = dir_sign * (fair value - order price)
+ where dir_sign = 1 for buying and -1 for selling
+</pre>
+
+
+<p>
+The way to think about edge is that it is the profit you earn by completing
+that trade.
+</p>
+<p>
+So given a fair value, where should you send orders? Let's look at two ideas:
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Pennying</h3>
+<div class="outline-text-3" id="text-5-3">
+
+<p>You want to earn the most edge you can. Pennying is the idea of looking at
+the current best bid and offer, and sending orders the minimum amount "inside"
+that. I.e. you send a buy order at [current best bid + 1] and/or a sell order at
+[current best offer - 1].
+</p>
+<p>
+This kind of strategy is an example of "providing liquidity". You place orders on the
+book, and when price-insensitive investors come along to trade, they find your orders
+ already sitting there, and trade against them.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Taking</h3>
+<div class="outline-text-3" id="text-5-4">
+
+<p>On rare occasions, you might believe that the fair value is outside the current
+best bid and offer, in which case you might want to trade with the current
+market. For example, if you think [fair value] &gt; [current best offer], you might
+send a buy order at [current best offer] to trade with the offer.
+</p>
+<p>
+This kind of strategy is often referred to as "taking liquidity".
+</p>
+<p>
+WARNING: You generally need to have a good idea of fair value to make money by
+taking liquidity! Remember markets are generally fairly efficient most of the time!
+</p></div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2017-10-21T00:52+0000</p>
+<p class="author">Author: Ubuntu</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
